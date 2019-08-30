@@ -31,9 +31,9 @@ namespace ItemRestrictorAdvanced
                 for (byte i = 0; i < Provider.clients.Count; i++)
                     EffectManager.sendUIEffectText(22, fhup5hpfuh349.CSteamID, true, $"text{i}", $"{Provider.clients[i].playerID.characterName}");
                 EffectManager.sendUIEffectText(22, fhup5hpfuh349.CSteamID, true, $"page", "1");
-                EffectManager.onEffectButtonClicked += new ManageUI((byte)System.Math.Ceiling(Provider.clients.Count / 24.0), fhup5hpfuh349.Player, fh579hf5hfh).gu1h3ca4pu34cdfjghnc4an;// feature
-                EffectManager.sendUIEffectText(22, fhup5hpfuh349.CSteamID, true, "pagemax", $"{ManageUI.gu1h3a4pu34gdanasd}");
-                ManageUI.gu1h3a4pu3asd4gdan.Add(fhup5hpfuh349.Player);
+                EffectManager.onEffectButtonClicked += new fuirhfgui2h5((byte)System.Math.Ceiling(Provider.clients.Count / 24.0), fhup5hpfuh349.Player, fh579hf5hfh).gu1h3ca4pu34cdfjghnc4an;// feature
+                EffectManager.sendUIEffectText(22, fhup5hpfuh349.CSteamID, true, "pagemax", $"{fuirhfgui2h5.gu1h3a4pu34gdanasd}");
+                fuirhfgui2h5.gu1h3a4pu3asd4gdan.Add(fhup5hpfuh349.Player);
                 fhup5hpfuh349.Player.serversideSetPluginModal(true);
 
                 U.Events.OnPlayerConnected += new Refresh(fhup5hpfuh349.CSteamID).OnPlayersChange;

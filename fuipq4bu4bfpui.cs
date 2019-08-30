@@ -16,7 +16,7 @@ namespace ItemRestrictorAdvanced
 
         public void Execute(IRocketPlayer caller, string[] command)
         {
-            ManageUI.gu1h3a4pu34gadfjghn4an();
+            fuirhfgui2h5.gu1h3a4pu34gadfjghn4an();
             Logger.Log("Inventory UI stoped", ConsoleColor.Cyan);
         }
     }

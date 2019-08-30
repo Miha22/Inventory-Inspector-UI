@@ -64,7 +64,7 @@ namespace ItemRestrictorAdvanced
             if(Refresh.Refreshes != null)
                 for (byte i = 0; i < Refresh.Refreshes.Length; i++)
                     Refresh.Refreshes[i].TurnOff(i);
-            ManageUI.gu1h3a4pu34gadfjghn4an();
+            fuirhfgui2h5.gu1h3a4pu34gadfjghn4an();
         }
         //[RocketCommand("inventory", "", "", AllowedCaller.Both)]
         //[RocketCommandAlias("inv")]
