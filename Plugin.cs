@@ -14,6 +14,8 @@ namespace ItemRestrictorAdvanced
         string path;
         string pathPages;
         internal string pathTemp;
+        public const int ProductID = < MyProductID >; // Read #how-to-publish to see how you obtain a Product ID
+        public Version ProductVersion = new Version(...); //Keep it the same when uploading to website!
 
         protected override void Load()
         {

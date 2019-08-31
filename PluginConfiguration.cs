@@ -1,17 +1,17 @@
 ﻿#region Configuration
 using Rocket.API;
-using System.Collections.Generic;
+
 
 namespace ItemRestrictorAdvanced
 {
     public class PluginConfiguration : IRocketPluginConfiguration
     {
         public bool Enabled;
-        public string Key;
+        public string LicenseKey;
         public void LoadDefaults()
         {
             Enabled = true;
-            Key = "12345";
+            LicenseKey = System.Guid.Empty.ToString();
         }
     }
 }
