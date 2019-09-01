@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ItemRestrictorAdvanced")]
-[assembly: AssemblyDescription("ItemRestrictorAdvanced by M22")]
+[assembly: AssemblyTitle("")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ItemRestrictorAdvanced")]
-[assembly: AssemblyCopyright("Copyright ©  2019 Deniel Alekseev")]
+[assembly: AssemblyProduct("")]
+[assembly: AssemblyCopyright("Copyright ©  2019 M22")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

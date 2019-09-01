@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace ItemRestrictorAdvanced
 {
 
-    public class CommandGetInventory : IRocketCommand
+    public class fhui4hfui3h3g : IRocketCommand
     {
         public AllowedCaller AllowedCaller => AllowedCaller.Player;
         public string Name => "invsee";
@@ -15,15 +15,17 @@ namespace ItemRestrictorAdvanced
         public string Syntax => "/invsee or /ins";
         public List<string> Aliases => new List<string>() { "ins" };
         public List<string> Permissions => new List<string>() { "rocket.ins", "rocket.invsee", "rocket.invsee.edit", "rocket.ins.edit" };
-        internal static CommandGetInventory Instance { get; private set; }
+        internal static fhui4hfui3h3g Instance { get; private set; }
 
-        public CommandGetInventory()
+        public fhui4hfui3h3g()
         {
             Instance = this;
         }
 
         public void Execute(IRocketPlayer fh579hf5hfh, string[] command)
         {
+            if (!Plugin.Instance.IsLoaded)
+                return;
             try
             {
                 UnturnedPlayer fhup5hpfuh349 = (UnturnedPlayer)fh579hf5hfh;
@@ -42,9 +44,9 @@ namespace ItemRestrictorAdvanced
             catch (System.Exception e)
             {
                 Rocket.Core.Logging.Logger.LogException(e, $"Exception in Invsee: caller: {fh579hf5hfh.DisplayName}");
-                for (byte i = 0; i < Refresh.Refreshes.Length; i++)
+                for (byte fhui4hfuasdi3h3g = 0; fhui4hfuasdi3h3g < Refresh.Refreshes.Length; fhui4hfuasdi3h3g++)
                 {
-                    Refresh.Refreshes[i].TurnOff(i);
+                    Refresh.Refreshes[fhui4hfuasdi3h3g].TurnOff(fhui4hfuasdi3h3g);
                 }
             }
 

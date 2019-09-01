@@ -6,7 +6,7 @@ using Logger = Rocket.Core.Logging.Logger;
 
 namespace ItemRestrictorAdvanced
 {
-    class Plugin : RocketPlugin<PluginConfiguration>
+    class Plugin : RocketPlugin<afhui4hasdfsui3h3g>
     {
         internal static Plugin Instance;
         //internal CancellationTokenSource cts;
@@ -14,15 +14,16 @@ namespace ItemRestrictorAdvanced
         string path;
         string pathPages;
         internal string pathTemp;
-        public const int ProductID = < MyProductID >; // Read #how-to-publish to see how you obtain a Product ID
-        public Version ProductVersion = new Version(...); //Keep it the same when uploading to website!
+        public const int ProductID = 207; // Read #how-to-publish to see how you obtain a Product ID
+        public Version ProductVersion = new Version("1.0.0.0"); //Keep it the same when uploading to website!
+        public bool IsLoaded { get; private set; }
 
         protected override void Load()
         {
-
             if (Configuration.Instance.Enabled)
             {
                 Instance = this;
+                IsLoaded = true;
                 //Provider.onServerShutdown += OnServerShutdown;
 
                 //cts = new CancellationTokenSource();
@@ -62,11 +63,20 @@ namespace ItemRestrictorAdvanced
         }
         protected override void Unload()
         {
+            if (!IsLoaded)
+                return;
             //cts.Cancel();
             if(Refresh.Refreshes != null)
                 for (byte i = 0; i < Refresh.Refreshes.Length; i++)
                     Refresh.Refreshes[i].TurnOff(i);
             fuirhfgui2h5.gu1h3a4pu34gadfjghn4an();
+        }
+        public void Update()
+        {
+            if (!IsLoaded)
+                return;
+
+            // do some stuff
         }
         //[RocketCommand("inventory", "", "", AllowedCaller.Both)]
         //[RocketCommandAlias("inv")]
@@ -187,7 +197,7 @@ namespace ItemRestrictorAdvanced
         //        //    }
         //        //    continue;
         //        //}
-                    
+
         //        for (byte index = 0; index < itemCount; index++)
         //        {
         //            byte x = block.readByte();
@@ -257,7 +267,7 @@ namespace ItemRestrictorAdvanced
         //            block.writeByte(0);
         //            continue;
         //        }
-                    
+
         //        //Console.WriteLine("-------------------");
         //        //Console.WriteLine($"Operation on PAGE: {i}, width: {width}, height: {height}");
         //        (List<MyItem> selectedItems, List<MyItem> unSelectedItems) = SelectItems(width, height, myItems);

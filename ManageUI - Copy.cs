@@ -228,7 +228,17 @@ namespace ItemRestrictorAdvanced
                     break;
 
                 case "ButtonNext":
-                    if (currentPage == PagesCountInv)
+                    
+					if (UIitemsPages[currentPage - 1].Count == 24)
+                    {
+                        currentPage++;
+                        PagesCountInv++;
+                        UIitemsPages.Add(new List<MyItem>());
+                        EffectManager.askEffectClearByID(8101, callerPlayer.channel.owner.playerID.steamID);
+                        ShowItemsUI(callerPlayer, currentPage);
+						break;
+                    }
+					else if (currentPage == PagesCountInv)
                         currentPage = 1;
                     else
                         currentPage++;
@@ -650,6 +660,7 @@ namespace ItemRestrictorAdvanced
                 UIitemsPages.Add(myPage);
             }
             PagesCountInv = (byte)UIitemsPages.Count;
+			currentPage = currentPage > pagesCountInv ? currentPage = pagesCountInv : currentPage;
             //Console.WriteLine("in get target items");
             //Console.WriteLine($"UIitemsPages.Count: {UIitemsPages.Count}");
             //Console.WriteLine($"PagesCountInv: {PagesCountInv}");

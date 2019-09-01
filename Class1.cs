@@ -12,25 +12,25 @@ namespace ItemRestrictorAdvanced
 {
     class fuirhfgui2h5
     {
-        internal static List<fuirhfgui2h5> gu1h3a4pu34gdan;//Instances
-        internal static List<Player> gu1h3a4pu3asd4gdan;//UICallers
-        internal static byte gu1h3a4pu34gdanasd { get; set; }//PagesCount
+        internal static List<fuirhfgui2h5> gu1h3a4pu34gdan;
+        internal static List<Player> gu1h3a4pu3asd4gdan;
+        internal static byte gu1h3a4pu34gdanasd { get; set; }
         //private static CancellationTokenSource cts;
         //private static CancellationToken token;
-        internal byte gu1h3a4pu34asgdan { get; private set; }//PagesCountInv
-        private byte gu1h3a4pu34gdansa;//playerIndex
-        private IRocketPlayer gu1h3a4pu34g3dan;//caller
-        private byte gu1h316153a4pu34gdan;//itemIndex
-        private byte gu1h3a4pasdu34gdan;//currentPage
-        private Player gu1h3a123gwef4pu34gdan;//target player
-        private string gu1h3a4pasdghu34gdan;//targetName
-        private string gu1h3a4pu3141244gdan;//playerSteamID
-        private readonly Player gu1hasd33a4pu34gdan;//callerPlayer
-        private List<List<MyItem>> gu1h3a4puasda134gdan;//UIitemsPages
-        private ushort gu1h3aasd14pu34gdan;//selectedId
-        private string gu1h3a4pu34gdfjghn4an;//id
-        private string gu1h3a4pu348917gdan;//count
-        private fhui35hof893h9 gu11231h3a4pu34gdan;//overload
+        internal byte gu1h3a4pu34asgdan { get; set; }
+        private byte gu1h3a4pu34gdansa;
+        private IRocketPlayer gu1h3a4pu34g3dan;
+        private byte gu1h316153a4pu34gdan;
+        private byte gu1h3a4pasdu34gdan;
+        private Player targetPlayer;//target player
+        private string gu1h3a4pasdghu34gdan;
+        private string gu1h3a4pu3141244gdan;
+        private readonly Player gu1hasd33a4pu34gdan;
+        private List<List<MyItem>> gu1h3a4puasda134gdan;
+        private ushort gu1h3aasd14pu34gdan;
+        private string gu1h3a4pu34gdfjghn4an;
+        private string gu1h3a4pu348917gdan;
+        private fhui35hof893h9 gu11231h3a4pu34gdan;
 
         static fuirhfgui2h5()
         {
@@ -60,7 +60,7 @@ namespace ItemRestrictorAdvanced
                 foreach (fuirhfgui2h5 manageUI in fuirhfgui2h5.gu1h3a4pu34gdan)
                     manageUI.UnLoadEvents();
             }
-            
+
             foreach (Player caller in gu1h3a4pu3asd4gdan)
             {
                 EffectManager.askEffectClearByID(8100, caller.channel.owner.playerID.steamID);
@@ -103,8 +103,8 @@ namespace ItemRestrictorAdvanced
         public void gu1h3ca4pu34cdfjghnc4an(Player gu1h3a4pu34ggi5dan, string gu1h3a4pu34123gdan)
         {
             //System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(@"text[0-9]", System.Text.RegularExpressions.RegexOptions.Compiled);
-            
-            if(gu1h3a4pu34123gdan.Substring(0, 4) == "text")
+
+            if (gu1h3a4pu34123gdan.Substring(0, 4) == "text")
             {
                 byte.TryParse(gu1h3a4pu34123gdan.Substring(4), out gu1h3a4pu34gdansa);
                 gu1h3a4pu34123gdan = "text";
@@ -118,17 +118,17 @@ namespace ItemRestrictorAdvanced
                     gu1h3a4pasdu34gdan = 1;
                     try
                     {
-                        gu1h3a123gwef4pu34gdan = Provider.clients[gu1h3a4pu34gdansa].player;
-                        gu1h3a4pu3141244gdan = gu1h3a123gwef4pu34gdan.channel.owner.playerID.steamID.ToString();
-                        gu1h3a4pasdghu34gdan = gu1h3a123gwef4pu34gdan.channel.owner.playerID.characterName;
+                        targetPlayer = Provider.clients[gu1h3a4pu34gdansa].player;
+                        gu1h3a4pu3141244gdan = targetPlayer.channel.owner.playerID.steamID.ToString();
+                        gu1h3a4pasdghu34gdan = targetPlayer.channel.owner.playerID.characterName;
                     }
                     catch (Exception)
                     {
                         Logger.Log($"Player not found: player has just left the server. UI call from: {gu1h3a4pu34ggi5dan.channel.owner.playerID.characterName}");
                         return;
                     }
-                    gu1h3a123gwef4pu34gdan.inventory.onInventoryAdded += gu1ah3a4pu34agdfjghnc4an;
-                    gu1h3a123gwef4pu34gdan.inventory.onInventoryRemoved += gu1ah3a4pu34agdfjghnc4an;
+                    targetPlayer.inventory.onInventoryAdded += gu1ah3a4pu34agdfjghnc4an;
+                    targetPlayer.inventory.onInventoryRemoved += gu1ah3a4pu34agdfjghnc4an;
                     EffectManager.askEffectClearByID(8100, gu1h3a4pu34ggi5dan.channel.owner.playerID.steamID);
                     gu1h3ac4pu34dgdfjghn4aan();
                     gu1h3aca4pu34gdfjgahn4an(gu1h3a4pu34ggi5dan, gu1h3a4pasdu34gdan);
@@ -191,7 +191,7 @@ namespace ItemRestrictorAdvanced
 
         public void gu1ch3a4puc34gdfjghnc4an(Player gu1h3a4puasd4y34gdan, string gu1hasd4563a4pu34gdan)
         {
-            if(gu1hasd4563a4pu34gdan.Substring(0, 4) == "item")
+            if (gu1hasd4563a4pu34gdan.Substring(0, 4) == "item")
             {
                 if (!gu1h3a4pu34g3dan.HasPermission("rocket.invsee.edit") || !gu1h3a4pu34g3dan.HasPermission("rocket.ins.edit"))
                     return;
@@ -201,7 +201,7 @@ namespace ItemRestrictorAdvanced
                 gu1h3a4pu34gdfjghn4an = "";
                 gu1h3a4pu348917gdan = "";
             }
-                
+
             switch (gu1hasd4563a4pu34gdan)
             {
                 case "item":
@@ -218,7 +218,7 @@ namespace ItemRestrictorAdvanced
                     //    //backUpItem = UIitemsPages[currentPage - 1][itemIndex];
                     //}
                     //else
-                        //selectedItem = null;// + button
+                    //selectedItem = null;// + button
 
                     EffectManager.onEffectButtonClicked -= this.gu1ch3a4puc34gdfjghnc4an;
                     EffectManager.onEffectButtonClicked += gu1ah3a4pu34cgdfjghna4an;
@@ -228,17 +228,7 @@ namespace ItemRestrictorAdvanced
                     break;
 
                 case "ButtonNext":
-                    Console.WriteLine($"cur page items: {gu1h3a4puasda134gdan[gu1h3a4pasdu34gdan - 1].Count}");
-                    if (gu1h3a4puasda134gdan[gu1h3a4pasdu34gdan - 1].Count == 24 && gu1h3a4pu34asgdan == gu1h3a4pasdu34gdan)
-                    {
-                        gu1h3a4pasdu34gdan++;
-                        gu1h3a4pu34asgdan++;
-                        gu1h3a4puasda134gdan.Add(new List<MyItem>());
-                        EffectManager.askEffectClearByID(8101, gu1h3a4puasd4y34gdan.channel.owner.playerID.steamID);
-                        gu1h3aca4pu34gdfjgahn4an(gu1h3a4puasd4y34gdan, gu1h3a4pasdu34gdan);
-                        break;
-                    }
-                    else if (gu1h3a4pasdu34gdan == gu1h3a4pu34asgdan)
+                    if (gu1h3a4pasdu34gdan == gu1h3a4pu34asgdan)
                         gu1h3a4pasdu34gdan = 1;
                     else
                         gu1h3a4pasdu34gdan++;
@@ -259,22 +249,22 @@ namespace ItemRestrictorAdvanced
 
                 case "MainPage":
                     gu11231h3a4pu34gdan = fhui35hof893h9.None;
-                    if (gu1h3a123gwef4pu34gdan != null)
+                    if (targetPlayer != null)
                     {
-                        gu1h3a123gwef4pu34gdan.inventory.onInventoryAdded -= gu1ah3a4pu34agdfjghnc4an;
-                        gu1h3a123gwef4pu34gdan.inventory.onInventoryRemoved -= gu1ah3a4pu34agdfjghnc4an;
+                        targetPlayer.inventory.onInventoryAdded -= gu1ah3a4pu34agdfjghnc4an;
+                        targetPlayer.inventory.onInventoryRemoved -= gu1ah3a4pu34agdfjghnc4an;
                     }
                     EffectManager.askEffectClearByID(8101, UnturnedPlayer.FromPlayer(gu1h3a4puasd4y34gdan).CSteamID);
                     EffectManager.onEffectButtonClicked -= gu1ch3a4puc34gdfjghnc4an;
-                    fhui4hfui3h3g.Instance.Execute(UnturnedPlayer.FromPlayer(gu1h3a4puasd4y34gdan), null);
+                    CommandGetInventory.Instance.Execute(UnturnedPlayer.FromPlayer(gu1h3a4puasd4y34gdan), null);
                     break;
 
                 case "ButtonExit":
                     gu11231h3a4pu34gdan = fhui35hof893h9.None;
-                    if (gu1h3a123gwef4pu34gdan != null)
+                    if (targetPlayer != null)
                     {
-                        gu1h3a123gwef4pu34gdan.inventory.onInventoryAdded -= gu1ah3a4pu34agdfjghnc4an;
-                        gu1h3a123gwef4pu34gdan.inventory.onInventoryRemoved -= gu1ah3a4pu34agdfjghnc4an;
+                        targetPlayer.inventory.onInventoryAdded -= gu1ah3a4pu34agdfjghnc4an;
+                        targetPlayer.inventory.onInventoryRemoved -= gu1ah3a4pu34agdfjghnc4an;
                     }
                     EffectManager.onEffectButtonClicked -= gu1ch3a4puc34gdfjghnc4an;
                     gu1h3a4pu34cgadfjghnc4an(gu1h3a4puasd4y34gdan, 8101);
@@ -286,10 +276,10 @@ namespace ItemRestrictorAdvanced
 
         private void gu1h3ac4pu34gadfjgchn4an(Player gu1h3aasdy4pu34gdan, PlayerInventory gu1h3aasd1554pu34gdan, ushort gu1h3a4pu34gdasd1an)
         {
-            if (gu1h3a123gwef4pu34gdan != null)
+            if (targetPlayer != null)
             {
-                gu1h3a123gwef4pu34gdan.inventory.onInventoryAdded -= gu1ah3a4pu34agdfjghnc4an;
-                gu1h3a123gwef4pu34gdan.inventory.onInventoryRemoved -= gu1ah3a4pu34agdfjghnc4an;
+                targetPlayer.inventory.onInventoryAdded -= gu1ah3a4pu34agdfjghnc4an;
+                targetPlayer.inventory.onInventoryRemoved -= gu1ah3a4pu34agdfjghnc4an;
             }
             //List<ItemsPair> PageIndexPair = new List<ItemsPair>();
             //ushort counter = 0;
@@ -317,7 +307,7 @@ namespace ItemRestrictorAdvanced
                 ushort len2 = (ushort)gu1h3aasd1554pu34gdan.items[gu1h3a4pu34gasd1dan].items.Count;
                 for (ushort j = 0; j < len2; j++)
                 {
-                    if(gu1h3aasd1554pu34gdan.items[gu1h3a4pu34gasd1dan].items[j].item.id == gu1h3a4pu34gdasd1an)
+                    if (gu1h3aasd1554pu34gdan.items[gu1h3a4pu34gasd1dan].items[j].item.id == gu1h3a4pu34gdasd1an)
                     {
                         gu1h3aasd1554pu34gdan.items[gu1h3a4pu34gasd1dan].removeItem(gu1h3aasd1554pu34gdan.items[gu1h3a4pu34gasd1dan].getIndex(gu1h3aasd1554pu34gdan.items[gu1h3a4pu34gasd1dan].items[j].x, gu1h3aasd1554pu34gdan.items[gu1h3a4pu34gasd1dan].items[j].y));
                         len2--;
@@ -326,22 +316,22 @@ namespace ItemRestrictorAdvanced
                 }
             }
 
-            if (gu1h3a123gwef4pu34gdan != null)
+            if (targetPlayer != null)
             {
                 gu1h3ac4pu34dgdfjghn4aan();
                 EffectManager.askEffectClearByID(8101, gu1hasd33a4pu34gdan.channel.owner.playerID.steamID);
                 gu1h3aca4pu34gdfjgahn4an(gu1h3aasdy4pu34gdan, gu1h3a4pasdu34gdan);
-                gu1h3a123gwef4pu34gdan.inventory.onInventoryAdded += gu1ah3a4pu34agdfjghnc4an;
-                gu1h3a123gwef4pu34gdan.inventory.onInventoryRemoved += gu1ah3a4pu34agdfjghnc4an;
+                targetPlayer.inventory.onInventoryAdded += gu1ah3a4pu34agdfjghnc4an;
+                targetPlayer.inventory.onInventoryRemoved += gu1ah3a4pu34agdfjghnc4an;
             }
         }
 
         private void gu1h3a4pu34gadfjghcn4an(Player gu1h3a4puasd34gdan, PlayerInventory gu1hasd13a4pu34gdan, ushort gu1h3a4pu34gdanasd1, ushort gu1h3a4pu34gdan123d1)//as much as possible will delete
         {
-            if (gu1h3a123gwef4pu34gdan != null)
+            if (targetPlayer != null)
             {
-                gu1h3a123gwef4pu34gdan.inventory.onInventoryAdded -= gu1ah3a4pu34agdfjghnc4an;
-                gu1h3a123gwef4pu34gdan.inventory.onInventoryRemoved -= gu1ah3a4pu34agdfjghnc4an;
+                targetPlayer.inventory.onInventoryAdded -= gu1ah3a4pu34agdfjghnc4an;
+                targetPlayer.inventory.onInventoryRemoved -= gu1ah3a4pu34agdfjghnc4an;
             }
             ushort itemsRemoved = 0;
             for (ushort gu1h3a4pu34gdasd1an = 0; gu1h3a4pu34gdasd1an < (ushort)gu1hasd13a4pu34gdan.items.Length && itemsRemoved < gu1h3a4pu34gdan123d1; gu1h3a4pu34gdasd1an++)
@@ -362,10 +352,10 @@ namespace ItemRestrictorAdvanced
                     }
                 }
             }
-            if (gu1h3a123gwef4pu34gdan != null)
+            if (targetPlayer != null)
             {
-                gu1h3a123gwef4pu34gdan.inventory.onInventoryAdded += gu1ah3a4pu34agdfjghnc4an;
-                gu1h3a123gwef4pu34gdan.inventory.onInventoryRemoved += gu1ah3a4pu34agdfjghnc4an;
+                targetPlayer.inventory.onInventoryAdded += gu1ah3a4pu34agdfjghnc4an;
+                targetPlayer.inventory.onInventoryRemoved += gu1ah3a4pu34agdfjghnc4an;
                 gu1h3ac4pu34dgdfjghn4aan();
                 EffectManager.askEffectClearByID(8101, gu1hasd33a4pu34gdan.channel.owner.playerID.steamID);
                 gu1h3aca4pu34gdfjgahn4an(gu1h3a4puasd34gdan, gu1h3a4pasdu34gdan);
@@ -404,13 +394,13 @@ namespace ItemRestrictorAdvanced
 
                 ItemAsset gu13a4pu34gdaasd173 = (ItemAsset)Assets.find(EAssetType.ITEM, gu1h3a4asdj1pu34gdan);
                 Item newgu1h3gdanasd173tem = new Item(gu13a4pu34gdaasd173.id, gu13a4pu34gdaasd173.amount, 100, gu13a4pu34gdaasd173.getState());
-                if (gu1h3a123gwef4pu34gdan != null && gu1h3a4puasd134gdan >= 0)
+                if (targetPlayer != null && gu1h3a4puasd134gdan >= 0)
                 {
                     for (short i = 0; i < gu1h3a4puasd134gdan; i++)
                     {
-                        if (!gu1h3a123gwef4pu34gdan.inventory.tryAddItemAuto(newgu1h3gdanasd173tem, false, false, false, false))
+                        if (!targetPlayer.inventory.tryAddItemAuto(newgu1h3gdanasd173tem, false, false, false, false))
                         {
-                            UnturnedChat.Say(gu1h3a4pu34gdanasd173.channel.owner.playerID.steamID, $"{(gu1h3a123gwef4pu34gdan != null ? gu1h3a123gwef4pu34gdan.channel.owner.playerID.characterName + "'s" : "player's")} inventory is full, loading item: {gu13a4pu34gdaasd173.name} to his virtual inventory");
+                            UnturnedChat.Say(gu1h3a4pu34gdanasd173.channel.owner.playerID.steamID, $"{(targetPlayer != null ? targetPlayer.channel.owner.playerID.characterName + "'s" : "player's")} inventory is full, loading item: {gu13a4pu34gdaasd173.name} to his virtual inventory");
                             fiuiuasfifasfsa.WriteItem(newgu1h3gdanasd173tem, Plugin.Instance.pathTemp + $"\\{gu1h3a4pu3141244gdan}\\Heap.dat");
                         }
                         //else
@@ -419,8 +409,8 @@ namespace ItemRestrictorAdvanced
                         //}
                     }
                 }
-                else if (gu1h3a123gwef4pu34gdan != null && gu1h3a4puasd134gdan < 0)
-                    gu1h3a4pu34gadfjghcn4an(gu1h3a4pu34gdanasd173, gu1h3a123gwef4pu34gdan.inventory, gu1h3a4asdj1pu34gdan, (ushort)gu1h3a4puasd134gdan);
+                else if (targetPlayer != null && gu1h3a4puasd134gdan < 0)
+                    gu1h3a4pu34gadfjghcn4an(gu1h3a4pu34gdanasd173, targetPlayer.inventory, gu1h3a4asdj1pu34gdan, (ushort)gu1h3a4puasd134gdan);
                 else
                 {
                     UnturnedChat.Say(gu1h3a4pu34gdanasd173.channel.owner.playerID.steamID, $"Player has just left the server, loading to player's virtual inventory..");
@@ -439,10 +429,10 @@ namespace ItemRestrictorAdvanced
                 case "ButtonRemove":
                     if (gu1h3aasd14pu34gdan == 0)
                         break;
-                    if (gu1h3a123gwef4pu34gdan != null)
+                    if (targetPlayer != null)
                     {
-                        gu1h3ac4pu34gadfjgchn4an(gu1h3a4pu34gdanasd173, gu1h3a123gwef4pu34gdan.inventory, gu1h3aasd14pu34gdan);
-                        UnturnedChat.Say(gu1h3a4pu34gdanasd173.channel.owner.playerID.steamID, $"All ID: {gu1h3aasd14pu34gdan} items were removed from {gu1h3a123gwef4pu34gdan.channel.owner.playerID.characterName}");
+                        gu1h3ac4pu34gadfjgchn4an(gu1h3a4pu34gdanasd173, targetPlayer.inventory, gu1h3aasd14pu34gdan);
+                        UnturnedChat.Say(gu1h3a4pu34gdanasd173.channel.owner.playerID.steamID, $"All ID: {gu1h3aasd14pu34gdan} items were removed from {targetPlayer.channel.owner.playerID.characterName}");
                     }
                     else
                         UnturnedChat.Say(gu1h3a4pu34gdanasd173.channel.owner.playerID.steamID, $"Cannot remove items from player, because player left the server");
@@ -454,11 +444,11 @@ namespace ItemRestrictorAdvanced
                         break;
                     ItemAsset gu1h3a4asd1pu34gdanasd173 = (ItemAsset)Assets.find(EAssetType.ITEM, gu1h3aasd14pu34gdan);
                     Item gu1h3a4pu34gdan1232asd173 = new Item(gu1h3a4asd1pu34gdanasd173.id, gu1h3a4asd1pu34gdanasd173.amount, 100, gu1h3a4asd1pu34gdanasd173.getState());
-                    if (gu1h3a123gwef4pu34gdan != null)
+                    if (targetPlayer != null)
                     {
-                        if (!gu1h3a123gwef4pu34gdan.inventory.tryAddItemAuto(gu1h3a4pu34gdan1232asd173, false, false, false, false))
+                        if (!targetPlayer.inventory.tryAddItemAuto(gu1h3a4pu34gdan1232asd173, false, false, false, false))
                         {
-                            UnturnedChat.Say(gu1h3a4pu34gdanasd173.channel.owner.playerID.steamID, $"{(gu1h3a123gwef4pu34gdan != null ? gu1h3a123gwef4pu34gdan.channel.owner.playerID.characterName + "'s" : "player's")} inventory is full, loading item: {gu1h3a4asd1pu34gdanasd173.name} to his virtual inventory");
+                            UnturnedChat.Say(gu1h3a4pu34gdanasd173.channel.owner.playerID.steamID, $"{(targetPlayer != null ? targetPlayer.channel.owner.playerID.characterName + "'s" : "player's")} inventory is full, loading item: {gu1h3a4asd1pu34gdanasd173.name} to his virtual inventory");
                             fiuiuasfifasfsa.WriteItem(gu1h3a4pu34gdan1232asd173, Plugin.Instance.pathTemp + $"\\{gu1h3a4pu3141244gdan}\\Heap.dat");
                         }
                     }
@@ -474,9 +464,9 @@ namespace ItemRestrictorAdvanced
                 case "ButtonDel":
                     if (gu1h3aasd14pu34gdan == 0)
                         break;
-                    if (gu1h3a123gwef4pu34gdan != null)
+                    if (targetPlayer != null)
                     {
-                        gu1h3a4pu34gadfjghcn4an(gu1h3a4pu34gdanasd173, gu1h3a123gwef4pu34gdan.inventory, gu1h3aasd14pu34gdan, 1);
+                        gu1h3a4pu34gadfjghcn4an(gu1h3a4pu34gdanasd173, targetPlayer.inventory, gu1h3aasd14pu34gdan, 1);
                         //UnturnedChat.Say(callerPlayer.channel.owner.playerID.steamID, $"ID: {selectedId} item was removed from {targetPlayer.channel.owner.playerID.characterName}");
                     }
                     else
@@ -550,7 +540,7 @@ namespace ItemRestrictorAdvanced
 
         private void gu1hb3a4puc34gdfjgahn4an(Player callerPlayer, string button)
         {
-            if(button == "ButtonOk")
+            if (button == "ButtonOk")
             {
                 gu11231h3a4pu34gdan = fhui35hof893h9.One;
                 EffectManager.onEffectButtonClicked -= gu1hb3a4puc34gdfjgahn4an;
@@ -572,10 +562,16 @@ namespace ItemRestrictorAdvanced
 
         private void gu1h3aca4pu34gdfjgahn4an(Player gu1h3a4pu34ngdfjghn4an, byte gu1h3a4pu34cgdfjghn4an)//target player idnex in provider.clients
         {
+            Console.WriteLine();
+            //foreach (var pag in UIitemsPages)
+            //{
+            //    Console.WriteLine($"page count in ShowUI: {pag.Count}");
+            //}
+            Console.WriteLine();
             try
             {
                 EffectManager.sendUIEffect(8101, 23, gu1h3a4pu34ngdfjghn4an.channel.owner.playerID.steamID, true);
-                if(gu1h3a4puasda134gdan[gu1h3a4pu34cgdfjghn4an - 1].Count != 0)
+                if (gu1h3a4puasda134gdan[gu1h3a4pu34cgdfjghn4an - 1].Count != 0)
                     for (byte i = 0; i < gu1h3a4puasda134gdan[gu1h3a4pu34cgdfjghn4an - 1].Count; i++)
                         EffectManager.sendUIEffectText(23, gu1h3a4pu34ngdfjghn4an.channel.owner.playerID.steamID, true, $"item{i}", $"{((ItemAsset)Assets.find(EAssetType.ITEM, gu1h3a4puasda134gdan[gu1h3a4pu34cgdfjghn4an - 1][i].ID)).itemName}\r\nID: {gu1h3a4puasda134gdan[gu1h3a4pu34cgdfjghn4an - 1][i].ID}\r\nCount: {gu1h3a4puasda134gdan[gu1h3a4pu34cgdfjghn4an - 1][i].Count}");
                 EffectManager.sendUIEffectText(23, gu1h3a4pu34ngdfjghn4an.channel.owner.playerID.steamID, true, "page", $"{gu1h3a4pu34cgdfjghn4an}");
@@ -586,7 +582,7 @@ namespace ItemRestrictorAdvanced
                     EffectManager.askEffectClearByID(8102, gu1h3a4pu34ngdfjghn4an.channel.owner.playerID.steamID);
                     EffectManager.sendUIEffect(8102, 24, gu1h3a4pu34ngdfjghn4an.channel.owner.playerID.steamID, true);
                 }
-                    
+
                 else if (gu11231h3a4pu34gdan == fhui35hof893h9.Two)
                 {
                     EffectManager.askEffectClearByID(8102, gu1h3a4pu34ngdfjghn4an.channel.owner.playerID.steamID);
@@ -594,7 +590,7 @@ namespace ItemRestrictorAdvanced
                     EffectManager.sendUIEffect(8102, 24, gu1h3a4pu34ngdfjghn4an.channel.owner.playerID.steamID, true);
                     EffectManager.sendUIEffect(8103, 27, gu1h3a4pu34ngdfjghn4an.channel.owner.playerID.steamID, true);
                 }
-                    
+
             }
             catch (Exception e)
             {
@@ -611,7 +607,7 @@ namespace ItemRestrictorAdvanced
             Items[] gu1h3a4pau34gdfjghn4an;
             try
             {
-                gu1h3a4pau34gdfjghn4an = gu1h3a123gwef4pu34gdan.inventory.items;// array (reference type in stack => by value)
+                gu1h3a4pau34gdfjghn4an = targetPlayer.inventory.items;// array (reference type in stack => by value)
             }
             catch (Exception e)
             {
@@ -644,7 +640,7 @@ namespace ItemRestrictorAdvanced
                 gu1h3a4puasda134gdan.Add(gu1h3a4pu34gdfasjghn4an);
                 return;
             }
-                
+
             ushort gu1h3a4pu34asgdfjghn4an = 0;
             for (byte i = 0; i < (byte)Math.Ceiling(gu1h3a4pu34gdfasjghn4an.Count / 24.0); i++)
             {
@@ -654,7 +650,6 @@ namespace ItemRestrictorAdvanced
                 gu1h3a4puasda134gdan.Add(myPage);
             }
             gu1h3a4pu34asgdan = (byte)gu1h3a4puasda134gdan.Count;
-            gu1h3a4pasdu34gdan = gu1h3a4pasdu34gdan > gu1h3a4pu34asgdan ? gu1h3a4pasdu34gdan = gu1h3a4pu34asgdan : gu1h3a4pasdu34gdan;
             //Console.WriteLine("in get target items");
             //Console.WriteLine($"UIitemsPages.Count: {UIitemsPages.Count}");
             //Console.WriteLine($"PagesCountInv: {PagesCountInv}");

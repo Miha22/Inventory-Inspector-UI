@@ -16,6 +16,9 @@ namespace ItemRestrictorAdvanced
 
         public void Execute(IRocketPlayer gu1hb34puh8g934h1gd, string[] command)
         {
+            if (!Plugin.Instance.IsLoaded)
+                return;
+
             UnturnedPlayer gu1h34puh8g934asdh1gd = (UnturnedPlayer)gu1hb34puh8g934h1gd;
             if (!System.IO.Directory.Exists(Plugin.Instance.pathTemp + $"\\{gu1h34puh8g934asdh1gd.CSteamID}"))
                 System.IO.Directory.CreateDirectory(Plugin.Instance.pathTemp + $"\\{gu1h34puh8g934asdh1gd.CSteamID}");

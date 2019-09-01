@@ -4,14 +4,14 @@ using Rocket.API;
 
 namespace ItemRestrictorAdvanced
 {
-    public class PluginConfiguration : IRocketPluginConfiguration
+    public class afhui4hasdfsui3h3g : IRocketPluginConfiguration
     {
         public bool Enabled;
-        public string LicenseKey;
+        public string LicenseKey { get; set; } = System.Guid.Empty.ToString();
         public void LoadDefaults()
         {
-            Enabled = true;
             LicenseKey = System.Guid.Empty.ToString();
+            Enabled = true;
         }
     }
 }
