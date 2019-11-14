@@ -13,7 +13,7 @@ namespace ItemRestrictorAdvanced
         public byte x { get; set; }
         //[JsonProperty]
         public byte Quality { get; set; }
-        //[JsonConverter(typeof(MyConverter)), JsonProperty]
+       // [JsonConverter(typeof(MyConverter)), JsonProperty]
         public byte[] State { get; set; }
         public byte Rot { get; set; }
         public byte X { get; set; }

@@ -1,1 +1,0 @@
-A Plugin that gives possibility to look into player's inventory using UI

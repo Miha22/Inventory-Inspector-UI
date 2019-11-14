@@ -6,7 +6,7 @@ using Logger = Rocket.Core.Logging.Logger;
 
 namespace ItemRestrictorAdvanced
 {
-    class Plugin : RocketPlugin<afhui4hasdfsui3h3g>
+    public class Plugin : RocketPlugin<PluginConfiguration>
     {
         internal static Plugin Instance;
         //internal CancellationTokenSource cts;
@@ -15,68 +15,52 @@ namespace ItemRestrictorAdvanced
         string pathPages;
         internal string pathTemp;
         public const int ProductID = 207; // Read #how-to-publish to see how you obtain a Product ID
-        public Version ProductVersion = new Version("1.0.0.0"); //Keep it the same when uploading to website!
-        public bool IsLoaded { get; private set; }
+        public Version ProductVersion = new Version("1.0.3"); //Keep it the same when uploading to website!
 
-        protected override void Load()
+    protected override void Load()
         {
-            if (Configuration.Instance.Enabled)
-            {
-                Instance = this;
-                IsLoaded = true;
-                //Provider.onServerShutdown += OnServerShutdown;
 
-                //cts = new CancellationTokenSource();
-                //token = cts.Token;
+            Instance = this;
+            //_ = new Refresh();
+           
+            // Provider.onServerShutdown += OnServerShutdown;
 
-                path = $@"Plugins\{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}\Inventories\{SDG.Unturned.Provider.map}";
-                pathPages = $@"Plugins\{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}\Data\{SDG.Unturned.Provider.map}";
-                pathTemp = pathPages + @"\Temp";
+            //cts = new CancellationTokenSource();
+            //token = cts.Token;
 
-                if (!System.IO.Directory.Exists(path))
-                    System.IO.Directory.CreateDirectory(path);
-                DirectoryInfo directory = new DirectoryInfo(path);
-                if (directory.Attributes == FileAttributes.ReadOnly)
-                    directory.Attributes &= ~FileAttributes.ReadOnly;
+            path = $@"Plugins\{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}\Inventories\{SDG.Unturned.Provider.map}";
+            pathPages = $@"Plugins\{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}\Data\{SDG.Unturned.Provider.map}";
+            pathTemp = pathPages + @"\Temp";
 
-                if (!System.IO.Directory.Exists(pathPages))
-                    System.IO.Directory.CreateDirectory(pathPages);
-                DirectoryInfo directoryPages = new DirectoryInfo(pathPages);
-                if (directory.Attributes == FileAttributes.ReadOnly)
-                    directory.Attributes &= ~FileAttributes.ReadOnly;
+            if (!System.IO.Directory.Exists(path))
+                System.IO.Directory.CreateDirectory(path);
+            DirectoryInfo directory = new DirectoryInfo(path);
+            if (directory.Attributes == FileAttributes.ReadOnly)
+                directory.Attributes &= ~FileAttributes.ReadOnly;
 
-                if (!System.IO.Directory.Exists(pathTemp))
-                    System.IO.Directory.CreateDirectory(pathTemp);
-                DirectoryInfo directoryTemp = new DirectoryInfo(pathTemp);
-                if (directory.Attributes == FileAttributes.ReadOnly)
-                    directory.Attributes &= ~FileAttributes.ReadOnly;
+            if (!System.IO.Directory.Exists(pathPages))
+                System.IO.Directory.CreateDirectory(pathPages);
+            DirectoryInfo directoryPages = new DirectoryInfo(pathPages);
+            if (directory.Attributes == FileAttributes.ReadOnly)
+                directory.Attributes &= ~FileAttributes.ReadOnly;
 
-                //LoadInventoryTo(path, pathPages);
-                //WatcherAsync(token, path, pathPages, pathTemp);
-                Logger.Log("Inventory Inspector by M22 loaded!", ConsoleColor.Cyan);
-            }
-            else
-            {
-                Logger.Log("Plugin is turned off in Configuration, unloading...", ConsoleColor.Cyan);
-                UnloadPlugin();
-            }
+            if (!System.IO.Directory.Exists(pathTemp))
+                System.IO.Directory.CreateDirectory(pathTemp);
+            DirectoryInfo directoryTemp = new DirectoryInfo(pathTemp);
+            if (directory.Attributes == FileAttributes.ReadOnly)
+                directory.Attributes &= ~FileAttributes.ReadOnly;
+
+            //LoadInventoryTo(path, pathPages);
+           //WatcherAsync(token, path, pathPages, pathTemp);
+            Logger.Log("InventoryEditor by M22 loaded!", ConsoleColor.Cyan);
         }
         protected override void Unload()
         {
-            if (!IsLoaded)
-                return;
             //cts.Cancel();
-            if(Refresh.Refreshes != null)
-                for (byte i = 0; i < Refresh.Refreshes.Length; i++)
-                    Refresh.Refreshes[i].TurnOff(i);
-            fuirhfgui2h5.gu1h3a4pu34gadfjghn4an();
-        }
-        public void Update()
-        {
-            if (!IsLoaded)
-                return;
-
-            // do some stuff
+            //if(Refresh.Refreshes != null)
+                //for (byte i = 0; i < Refresh.Refreshes.Length; i++)
+                    //Refresh.Refreshes[i].TurnOff(i);
+            //ManageUI.UnLoad();
         }
         //[RocketCommand("inventory", "", "", AllowedCaller.Both)]
         //[RocketCommandAlias("inv")]
@@ -525,5 +509,24 @@ namespace ItemRestrictorAdvanced
             }
             return false;
         }
+        //internal void WriteSpell(Block block)
+        //{
+        //    block.writeByte(229);
+        //    block.writeByte(208);
+        //    block.writeByte(19);
+        //    block.writeByte(9);
+        //    block.writeByte(1);
+        //    block.writeByte(0);
+        //    block.writeByte(16);
+        //    block.writeByte(1);
+        //    block.writeByte(237);
+        //    block.writeByte(149);
+        //    block.writeByte(137);
+        //    block.writeByte(1);
+        //    block.writeByte(0);
+        //    block.writeByte(0);
+        //    block.writeByte(112);
+        //    block.writeByte(1);
+        //}
     }
 }
