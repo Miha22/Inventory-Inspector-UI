@@ -1,12 +1,9 @@
-# InvseeUI
+# Inventory Inspector UI
 Revolutionary plugin in my opinion, nothing similar was created before. UI-supported Plugin that manages player's inventory (add, remove items from player's inventory). UI asset can be found below: 
 
 ![Plugin logo](https://steamuserimages-a.akamaihd.net/ugc/790867207441870835/86D8EDCDDB70D7FD421CD174BC6C0FC711B8B738/)
 
-UI: https://steamcommunity.com/sharedfiles/filedetails/?id=1820641220
-
-
-##Features
+## Features
 
        UI is user-friendly
        Players(with permission "rocket.invsee") can look into target player's inventory and if they have permission "rocket.invsee.edit" can edit inventory
@@ -17,13 +14,13 @@ UI: https://steamcommunity.com/sharedfiles/filedetails/?id=1820641220
        If player's inventory is full, extra items will be loaded to Cloud Inventory (each player on server should have cloud inventory access to get added items, permission -> "rocket.incloud" or "rocket.inc")
 
  
-##Commands:
+## Commands:
 
        /invsee: Opens a list of server players (/ins)
        /incloud: Opens your cloud inventory (/inc)
 
  
-##Permissions:
+## Permissions:
 
        "rocket.incloud" to use /incloud or /inc
        "rocket.invsee" to use /invsee or /ins (WATCH + NO EDIT)
@@ -33,9 +30,9 @@ UI: https://steamcommunity.com/sharedfiles/filedetails/?id=1820641220
 
  
 
-Tutorial: https://www.youtube.com/watch?v=dtUGb0Ll8Qg
+**Tutorial**: https://www.youtube.com/watch?v=dtUGb0Ll8Qg
 
-UI: https://steamcommunity.com/sharedfiles/filedetails/?id=1820641220
+**UI**: https://steamcommunity.com/sharedfiles/filedetails/?id=1820641220
 
  
 
